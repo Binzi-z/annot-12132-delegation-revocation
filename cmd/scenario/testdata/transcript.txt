@@ -1,0 +1,913 @@
+-- baseline bob: ALLOW --
+ALLOW orgB:bob read by orgB on tenant-a/doc-a (class=REMOTE_READ owner=orgA epoch=1)
+  chain=e-a-admin-dev>e-a-dev-bob
+  candidate e-a-admin-dev>e-a-dev-bob [usable]
+    ok   e-a-admin-dev gen=1 orgA:alice->orgA:dave scope=read,write epoch=1 
+    ok   e-a-dev-bob gen=1 orgA:dave->orgB:bob scope=read epoch=1 
+  certificate: {
+    "version": 1,
+    "node": "orgB",
+    "tenant": "tenant-a",
+    "resource": "doc-a",
+    "subject": "orgB:bob",
+    "action": "read",
+    "class": "REMOTE_READ",
+    "tenant_source": {
+      "node": "orgA",
+      "seq": 1,
+      "tick": 1,
+      "kind": "tenant",
+      "issuer": "orgA",
+      "tenant": "tenant-a",
+      "owner_org": "orgA",
+      "prev": "",
+      "hash": "d5b86ea9bfbb5a0049d39a0457fd94b81bfd32edf8cd602729acb8479551e772",
+      "sig": "6b2613ebf6eaeca1b4219f1cba2e0b01d536d0f08df61d37b6b53de07f85a558"
+    },
+    "resource_source": {
+      "node": "orgA",
+      "seq": 2,
+      "tick": 2,
+      "kind": "resource",
+      "issuer": "orgA",
+      "tenant": "tenant-a",
+      "resource": "doc-a",
+      "owner_org": "orgA",
+      "prev": "d5b86ea9bfbb5a0049d39a0457fd94b81bfd32edf8cd602729acb8479551e772",
+      "hash": "78898deb09474cf237fd7cf0973d83d045f7947cb207fbf625fec11cf95958ce",
+      "sig": "f6e687f2b394f10c02ed5bc3a1d4255a5e8379fcfc72f2e14bd6ba597f25a569"
+    },
+    "chain_id": "e-a-admin-dev\u003ee-a-dev-bob",
+    "steps": [
+      {
+        "delegate": {
+          "node": "orgA",
+          "seq": 6,
+          "tick": 6,
+          "kind": "delegate",
+          "issuer": "orgA",
+          "gen": 1,
+          "actor": "alice",
+          "tenant": "tenant-a",
+          "resource": "doc-a",
+          "epoch": 1,
+          "edge_id": "e-a-admin-dev",
+          "subject": "orgA:dave",
+          "scope": [
+            "read",
+            "write"
+          ],
+          "prev": "ad0bd57b49c708e06212dba6adbd54f4d0f5b0c95a7dbbf1f538d7355b05b060",
+          "hash": "3259557b20e7208d62a67eda38d37f5df38eb9a32d1ead0ef1a572c8c9d81be4",
+          "sig": "9f56dacac240cb1c10cb15f0574326a6a350e459d8ab4ca63fe80fe5fe175bd7"
+        },
+        "grant": {
+          "node": "orgA",
+          "seq": 3,
+          "tick": 3,
+          "kind": "authority",
+          "issuer": "orgA",
+          "gen": 1,
+          "actor": "alice",
+          "admin": true,
+          "prev": "78898deb09474cf237fd7cf0973d83d045f7947cb207fbf625fec11cf95958ce",
+          "hash": "80af2dea592ce7cf3f03165bd53501e8acb07ed4f511a88f28425a96c3d5dcd4",
+          "sig": "5f03e03147f3ce516bf042884a5e82117a6b62b6f5498b31b3d5f8fa264c15c9"
+        },
+        "freshness": "fresh"
+      },
+      {
+        "delegate": {
+          "node": "orgA",
+          "seq": 7,
+          "tick": 7,
+          "kind": "delegate",
+          "issuer": "orgA",
+          "gen": 1,
+          "actor": "dave",
+          "tenant": "tenant-a",
+          "resource": "doc-a",
+          "epoch": 1,
+          "edge_id": "e-a-dev-bob",
+          "parent": "e-a-admin-dev",
+          "subject": "orgB:bob",
+          "scope": [
+            "read"
+          ],
+          "prev": "3259557b20e7208d62a67eda38d37f5df38eb9a32d1ead0ef1a572c8c9d81be4",
+          "hash": "03073535920280e38b136cce465c0b63b476a28297ed070fc9dfccb6cce301f4",
+          "sig": "9675ba3a498e1ea79c5a93fbd8d07f2769860c0bc66927131d8a4d4f8486586f"
+        },
+        "grant": {
+          "node": "orgA",
+          "seq": 4,
+          "tick": 4,
+          "kind": "authority",
+          "issuer": "orgA",
+          "gen": 1,
+          "actor": "dave",
+          "prev": "80af2dea592ce7cf3f03165bd53501e8acb07ed4f511a88f28425a96c3d5dcd4",
+          "hash": "538c67069e76fdb3f7bd9fc84eba953c65f7773d5b43410c75b41c76e683ff42",
+          "sig": "a356bb22e057953d5bbb8d5793927ce1b4975ea4da25a7899a8f0aed785d6e12"
+        },
+        "freshness": "fresh"
+      }
+    ],
+    "watermarks": {
+      "orgA": {
+        "issuer": "orgA",
+        "gen": 1,
+        "tick": 9,
+        "seq": 9
+      }
+    },
+    "allowed": true,
+    "now": 9,
+    "issuer_generations": {
+      "orgA": 1
+    },
+    "body_hash": "1556ffbcd7dd2cd5ba024a4254de26cc8281541f0884e08e49f9e6657791fba7",
+    "signature": "e3f76539d40dbbb7ad4e51e61e189fa1644b528a257f0d049c11cc5fc3313e69",
+    "chains": [
+      {
+        "id": "e-a-admin-dev\u003ee-a-dev-bob",
+        "steps": [
+          {
+            "edge_id": "e-a-admin-dev",
+            "issuer": "orgA",
+            "gen": 1,
+            "actor": "alice",
+            "subject": "orgA:dave",
+            "scope": [
+              "read",
+              "write"
+            ],
+            "epoch": 1,
+            "valid": true,
+            "freshness": "fresh"
+          },
+          {
+            "edge_id": "e-a-dev-bob",
+            "parent": "e-a-admin-dev",
+            "issuer": "orgA",
+            "gen": 1,
+            "actor": "dave",
+            "subject": "orgB:bob",
+            "scope": [
+              "read"
+            ],
+            "epoch": 1,
+            "valid": true,
+            "freshness": "fresh"
+          }
+        ],
+        "valid": true,
+        "usable": true
+      }
+    ]
+  }
+  certificate: independently VERIFIED
+-- baseline carl: ALLOW --
+ALLOW orgB:carl read by orgB on tenant-a/doc-a (class=REMOTE_READ owner=orgA epoch=1)
+  chain=e-a-admin-ops>e-a-ops-carl
+  candidate e-a-admin-ops>e-a-ops-carl [usable]
+    ok   e-a-admin-ops gen=1 orgA:alice->orgA:olga scope=read,write epoch=1 
+    ok   e-a-ops-carl gen=1 orgA:olga->orgB:carl scope=read epoch=1 
+  certificate: {
+    "version": 1,
+    "node": "orgB",
+    "tenant": "tenant-a",
+    "resource": "doc-a",
+    "subject": "orgB:carl",
+    "action": "read",
+    "class": "REMOTE_READ",
+    "tenant_source": {
+      "node": "orgA",
+      "seq": 1,
+      "tick": 1,
+      "kind": "tenant",
+      "issuer": "orgA",
+      "tenant": "tenant-a",
+      "owner_org": "orgA",
+      "prev": "",
+      "hash": "d5b86ea9bfbb5a0049d39a0457fd94b81bfd32edf8cd602729acb8479551e772",
+      "sig": "6b2613ebf6eaeca1b4219f1cba2e0b01d536d0f08df61d37b6b53de07f85a558"
+    },
+    "resource_source": {
+      "node": "orgA",
+      "seq": 2,
+      "tick": 2,
+      "kind": "resource",
+      "issuer": "orgA",
+      "tenant": "tenant-a",
+      "resource": "doc-a",
+      "owner_org": "orgA",
+      "prev": "d5b86ea9bfbb5a0049d39a0457fd94b81bfd32edf8cd602729acb8479551e772",
+      "hash": "78898deb09474cf237fd7cf0973d83d045f7947cb207fbf625fec11cf95958ce",
+      "sig": "f6e687f2b394f10c02ed5bc3a1d4255a5e8379fcfc72f2e14bd6ba597f25a569"
+    },
+    "chain_id": "e-a-admin-ops\u003ee-a-ops-carl",
+    "steps": [
+      {
+        "delegate": {
+          "node": "orgA",
+          "seq": 8,
+          "tick": 8,
+          "kind": "delegate",
+          "issuer": "orgA",
+          "gen": 1,
+          "actor": "alice",
+          "tenant": "tenant-a",
+          "resource": "doc-a",
+          "epoch": 1,
+          "edge_id": "e-a-admin-ops",
+          "subject": "orgA:olga",
+          "scope": [
+            "read",
+            "write"
+          ],
+          "prev": "03073535920280e38b136cce465c0b63b476a28297ed070fc9dfccb6cce301f4",
+          "hash": "5e07806c6430727dc2fd3443c234982f10e8d0a6ea4a7f37bcb4ca9d824d8382",
+          "sig": "0c8dd8b1262bcd1f4761e7bc7fed055268963f535eec36d3e36befe69cc079bb"
+        },
+        "grant": {
+          "node": "orgA",
+          "seq": 3,
+          "tick": 3,
+          "kind": "authority",
+          "issuer": "orgA",
+          "gen": 1,
+          "actor": "alice",
+          "admin": true,
+          "prev": "78898deb09474cf237fd7cf0973d83d045f7947cb207fbf625fec11cf95958ce",
+          "hash": "80af2dea592ce7cf3f03165bd53501e8acb07ed4f511a88f28425a96c3d5dcd4",
+          "sig": "5f03e03147f3ce516bf042884a5e82117a6b62b6f5498b31b3d5f8fa264c15c9"
+        },
+        "freshness": "fresh"
+      },
+      {
+        "delegate": {
+          "node": "orgA",
+          "seq": 9,
+          "tick": 9,
+          "kind": "delegate",
+          "issuer": "orgA",
+          "gen": 1,
+          "actor": "olga",
+          "tenant": "tenant-a",
+          "resource": "doc-a",
+          "epoch": 1,
+          "edge_id": "e-a-ops-carl",
+          "parent": "e-a-admin-ops",
+          "subject": "orgB:carl",
+          "scope": [
+            "read"
+          ],
+          "prev": "5e07806c6430727dc2fd3443c234982f10e8d0a6ea4a7f37bcb4ca9d824d8382",
+          "hash": "0b9be3577624b8c1093ff8d58f08349bf8968cfc098c9f4e0cb2fca86798154e",
+          "sig": "ee170c31a3cbaf43746589809cddf19a3fdab26678f32d4cf1001c308ee24e6e"
+        },
+        "grant": {
+          "node": "orgA",
+          "seq": 5,
+          "tick": 5,
+          "kind": "authority",
+          "issuer": "orgA",
+          "gen": 1,
+          "actor": "olga",
+          "prev": "538c67069e76fdb3f7bd9fc84eba953c65f7773d5b43410c75b41c76e683ff42",
+          "hash": "ad0bd57b49c708e06212dba6adbd54f4d0f5b0c95a7dbbf1f538d7355b05b060",
+          "sig": "54ad1540de1df611fbaffb8921c5992dc44a76ef720258309d53a46491ea3494"
+        },
+        "freshness": "fresh"
+      }
+    ],
+    "watermarks": {
+      "orgA": {
+        "issuer": "orgA",
+        "gen": 1,
+        "tick": 9,
+        "seq": 9
+      }
+    },
+    "allowed": true,
+    "now": 9,
+    "issuer_generations": {
+      "orgA": 1
+    },
+    "body_hash": "59182d204ad66c9fbf0b65743dad95b38e2494c0e74574c1d8bc238b36a09e0e",
+    "signature": "a8c9f8daffbf2ea0c48ac3c4bc8303ac12c48cc1edeb45e136407c5573cbeedd",
+    "chains": [
+      {
+        "id": "e-a-admin-ops\u003ee-a-ops-carl",
+        "steps": [
+          {
+            "edge_id": "e-a-admin-ops",
+            "issuer": "orgA",
+            "gen": 1,
+            "actor": "alice",
+            "subject": "orgA:olga",
+            "scope": [
+              "read",
+              "write"
+            ],
+            "epoch": 1,
+            "valid": true,
+            "freshness": "fresh"
+          },
+          {
+            "edge_id": "e-a-ops-carl",
+            "parent": "e-a-admin-ops",
+            "issuer": "orgA",
+            "gen": 1,
+            "actor": "olga",
+            "subject": "orgB:carl",
+            "scope": [
+              "read"
+            ],
+            "epoch": 1,
+            "valid": true,
+            "freshness": "fresh"
+          }
+        ],
+        "valid": true,
+        "usable": true
+      }
+    ]
+  }
+  certificate: independently VERIFIED
+-- after revoke bob: DENY --
+DENY orgB:bob read by orgB on tenant-a/doc-a (class=REMOTE_READ owner=orgA epoch=1)
+  reason: no usable delegation path
+  candidate e-a-admin-dev>e-a-dev-bob [invalid] e-a-dev-bob: revoked by rev-scenario
+    ok   e-a-admin-dev gen=1 orgA:alice->orgA:dave scope=read,write epoch=1 
+    FAIL e-a-dev-bob gen=1 orgA:dave->orgB:bob scope=read epoch=1 revoked by rev-scenario
+  evidence: rev-scenario
+  certificate: {
+    "version": 1,
+    "node": "orgB",
+    "tenant": "tenant-a",
+    "resource": "doc-a",
+    "subject": "orgB:bob",
+    "action": "read",
+    "class": "REMOTE_READ",
+    "tenant_source": {
+      "node": "orgA",
+      "seq": 1,
+      "tick": 1,
+      "kind": "tenant",
+      "issuer": "orgA",
+      "tenant": "tenant-a",
+      "owner_org": "orgA",
+      "prev": "",
+      "hash": "d5b86ea9bfbb5a0049d39a0457fd94b81bfd32edf8cd602729acb8479551e772",
+      "sig": "6b2613ebf6eaeca1b4219f1cba2e0b01d536d0f08df61d37b6b53de07f85a558"
+    },
+    "resource_source": {
+      "node": "orgA",
+      "seq": 2,
+      "tick": 2,
+      "kind": "resource",
+      "issuer": "orgA",
+      "tenant": "tenant-a",
+      "resource": "doc-a",
+      "owner_org": "orgA",
+      "prev": "d5b86ea9bfbb5a0049d39a0457fd94b81bfd32edf8cd602729acb8479551e772",
+      "hash": "78898deb09474cf237fd7cf0973d83d045f7947cb207fbf625fec11cf95958ce",
+      "sig": "f6e687f2b394f10c02ed5bc3a1d4255a5e8379fcfc72f2e14bd6ba597f25a569"
+    },
+    "steps": [
+      {
+        "delegate": {
+          "node": "orgA",
+          "seq": 6,
+          "tick": 6,
+          "kind": "delegate",
+          "issuer": "orgA",
+          "gen": 1,
+          "actor": "alice",
+          "tenant": "tenant-a",
+          "resource": "doc-a",
+          "epoch": 1,
+          "edge_id": "e-a-admin-dev",
+          "subject": "orgA:dave",
+          "scope": [
+            "read",
+            "write"
+          ],
+          "prev": "ad0bd57b49c708e06212dba6adbd54f4d0f5b0c95a7dbbf1f538d7355b05b060",
+          "hash": "3259557b20e7208d62a67eda38d37f5df38eb9a32d1ead0ef1a572c8c9d81be4",
+          "sig": "9f56dacac240cb1c10cb15f0574326a6a350e459d8ab4ca63fe80fe5fe175bd7"
+        },
+        "grant": {
+          "node": "orgA",
+          "seq": 3,
+          "tick": 3,
+          "kind": "authority",
+          "issuer": "orgA",
+          "gen": 1,
+          "actor": "alice",
+          "admin": true,
+          "prev": "78898deb09474cf237fd7cf0973d83d045f7947cb207fbf625fec11cf95958ce",
+          "hash": "80af2dea592ce7cf3f03165bd53501e8acb07ed4f511a88f28425a96c3d5dcd4",
+          "sig": "5f03e03147f3ce516bf042884a5e82117a6b62b6f5498b31b3d5f8fa264c15c9"
+        },
+        "freshness": ""
+      },
+      {
+        "delegate": {
+          "node": "orgA",
+          "seq": 7,
+          "tick": 7,
+          "kind": "delegate",
+          "issuer": "orgA",
+          "gen": 1,
+          "actor": "dave",
+          "tenant": "tenant-a",
+          "resource": "doc-a",
+          "epoch": 1,
+          "edge_id": "e-a-dev-bob",
+          "parent": "e-a-admin-dev",
+          "subject": "orgB:bob",
+          "scope": [
+            "read"
+          ],
+          "prev": "3259557b20e7208d62a67eda38d37f5df38eb9a32d1ead0ef1a572c8c9d81be4",
+          "hash": "03073535920280e38b136cce465c0b63b476a28297ed070fc9dfccb6cce301f4",
+          "sig": "9675ba3a498e1ea79c5a93fbd8d07f2769860c0bc66927131d8a4d4f8486586f"
+        },
+        "grant": {
+          "node": "orgA",
+          "seq": 4,
+          "tick": 4,
+          "kind": "authority",
+          "issuer": "orgA",
+          "gen": 1,
+          "actor": "dave",
+          "prev": "80af2dea592ce7cf3f03165bd53501e8acb07ed4f511a88f28425a96c3d5dcd4",
+          "hash": "538c67069e76fdb3f7bd9fc84eba953c65f7773d5b43410c75b41c76e683ff42",
+          "sig": "a356bb22e057953d5bbb8d5793927ce1b4975ea4da25a7899a8f0aed785d6e12"
+        },
+        "freshness": ""
+      }
+    ],
+    "evidence": [
+      {
+        "evidence_id": "rev-scenario",
+        "kind": "revoke",
+        "issuer": "orgA",
+        "gen": 1,
+        "node": "orgA",
+        "seq": 10,
+        "tick": 10,
+        "edge_id": "e-a-dev-bob",
+        "event": {
+          "node": "orgA",
+          "seq": 10,
+          "tick": 10,
+          "kind": "revoke",
+          "issuer": "orgA",
+          "gen": 1,
+          "actor": "alice",
+          "edge_id": "e-a-dev-bob",
+          "evidence_id": "rev-scenario",
+          "prev": "0b9be3577624b8c1093ff8d58f08349bf8968cfc098c9f4e0cb2fca86798154e",
+          "hash": "3709df661f158214299f713fed7338ccf6d2320d21c39b9c50e584e8651c52d6",
+          "sig": "ef28303bc13b0c10733bbc6da511ecffb2312797b45d42849646b8bfadb8b840"
+        }
+      }
+    ],
+    "watermarks": {
+      "orgA": {
+        "issuer": "orgA",
+        "gen": 1,
+        "tick": 10,
+        "seq": 10
+      }
+    },
+    "allowed": false,
+    "reasons": [
+      "no usable delegation path"
+    ],
+    "now": 10,
+    "issuer_generations": {
+      "orgA": 1
+    },
+    "body_hash": "73c49bafd57baa10adf80e23066fc4f2469f2c8034a6a3b353c1c0faf2ffa082",
+    "signature": "53f18de96ac75168a9452226abe5b8fcae061f6eb09334665bee8f9251d15b2d",
+    "chains": [
+      {
+        "id": "e-a-admin-dev\u003ee-a-dev-bob",
+        "steps": [
+          {
+            "edge_id": "e-a-admin-dev",
+            "issuer": "orgA",
+            "gen": 1,
+            "actor": "alice",
+            "subject": "orgA:dave",
+            "scope": [
+              "read",
+              "write"
+            ],
+            "epoch": 1,
+            "valid": true
+          },
+          {
+            "edge_id": "e-a-dev-bob",
+            "parent": "e-a-admin-dev",
+            "issuer": "orgA",
+            "gen": 1,
+            "actor": "dave",
+            "subject": "orgB:bob",
+            "scope": [
+              "read"
+            ],
+            "epoch": 1,
+            "valid": false,
+            "reasons": [
+              "revoked by rev-scenario"
+            ]
+          }
+        ],
+        "valid": false,
+        "usable": false,
+        "reasons": [
+          "e-a-dev-bob: revoked by rev-scenario"
+        ]
+      }
+    ]
+  }
+  certificate: independently VERIFIED
+-- after revoke carl: ALLOW --
+ALLOW orgB:carl read by orgB on tenant-a/doc-a (class=REMOTE_READ owner=orgA epoch=1)
+  chain=e-a-admin-ops>e-a-ops-carl
+  candidate e-a-admin-ops>e-a-ops-carl [usable]
+    ok   e-a-admin-ops gen=1 orgA:alice->orgA:olga scope=read,write epoch=1 
+    ok   e-a-ops-carl gen=1 orgA:olga->orgB:carl scope=read epoch=1 
+  certificate: {
+    "version": 1,
+    "node": "orgB",
+    "tenant": "tenant-a",
+    "resource": "doc-a",
+    "subject": "orgB:carl",
+    "action": "read",
+    "class": "REMOTE_READ",
+    "tenant_source": {
+      "node": "orgA",
+      "seq": 1,
+      "tick": 1,
+      "kind": "tenant",
+      "issuer": "orgA",
+      "tenant": "tenant-a",
+      "owner_org": "orgA",
+      "prev": "",
+      "hash": "d5b86ea9bfbb5a0049d39a0457fd94b81bfd32edf8cd602729acb8479551e772",
+      "sig": "6b2613ebf6eaeca1b4219f1cba2e0b01d536d0f08df61d37b6b53de07f85a558"
+    },
+    "resource_source": {
+      "node": "orgA",
+      "seq": 2,
+      "tick": 2,
+      "kind": "resource",
+      "issuer": "orgA",
+      "tenant": "tenant-a",
+      "resource": "doc-a",
+      "owner_org": "orgA",
+      "prev": "d5b86ea9bfbb5a0049d39a0457fd94b81bfd32edf8cd602729acb8479551e772",
+      "hash": "78898deb09474cf237fd7cf0973d83d045f7947cb207fbf625fec11cf95958ce",
+      "sig": "f6e687f2b394f10c02ed5bc3a1d4255a5e8379fcfc72f2e14bd6ba597f25a569"
+    },
+    "chain_id": "e-a-admin-ops\u003ee-a-ops-carl",
+    "steps": [
+      {
+        "delegate": {
+          "node": "orgA",
+          "seq": 8,
+          "tick": 8,
+          "kind": "delegate",
+          "issuer": "orgA",
+          "gen": 1,
+          "actor": "alice",
+          "tenant": "tenant-a",
+          "resource": "doc-a",
+          "epoch": 1,
+          "edge_id": "e-a-admin-ops",
+          "subject": "orgA:olga",
+          "scope": [
+            "read",
+            "write"
+          ],
+          "prev": "03073535920280e38b136cce465c0b63b476a28297ed070fc9dfccb6cce301f4",
+          "hash": "5e07806c6430727dc2fd3443c234982f10e8d0a6ea4a7f37bcb4ca9d824d8382",
+          "sig": "0c8dd8b1262bcd1f4761e7bc7fed055268963f535eec36d3e36befe69cc079bb"
+        },
+        "grant": {
+          "node": "orgA",
+          "seq": 3,
+          "tick": 3,
+          "kind": "authority",
+          "issuer": "orgA",
+          "gen": 1,
+          "actor": "alice",
+          "admin": true,
+          "prev": "78898deb09474cf237fd7cf0973d83d045f7947cb207fbf625fec11cf95958ce",
+          "hash": "80af2dea592ce7cf3f03165bd53501e8acb07ed4f511a88f28425a96c3d5dcd4",
+          "sig": "5f03e03147f3ce516bf042884a5e82117a6b62b6f5498b31b3d5f8fa264c15c9"
+        },
+        "freshness": "fresh"
+      },
+      {
+        "delegate": {
+          "node": "orgA",
+          "seq": 9,
+          "tick": 9,
+          "kind": "delegate",
+          "issuer": "orgA",
+          "gen": 1,
+          "actor": "olga",
+          "tenant": "tenant-a",
+          "resource": "doc-a",
+          "epoch": 1,
+          "edge_id": "e-a-ops-carl",
+          "parent": "e-a-admin-ops",
+          "subject": "orgB:carl",
+          "scope": [
+            "read"
+          ],
+          "prev": "5e07806c6430727dc2fd3443c234982f10e8d0a6ea4a7f37bcb4ca9d824d8382",
+          "hash": "0b9be3577624b8c1093ff8d58f08349bf8968cfc098c9f4e0cb2fca86798154e",
+          "sig": "ee170c31a3cbaf43746589809cddf19a3fdab26678f32d4cf1001c308ee24e6e"
+        },
+        "grant": {
+          "node": "orgA",
+          "seq": 5,
+          "tick": 5,
+          "kind": "authority",
+          "issuer": "orgA",
+          "gen": 1,
+          "actor": "olga",
+          "prev": "538c67069e76fdb3f7bd9fc84eba953c65f7773d5b43410c75b41c76e683ff42",
+          "hash": "ad0bd57b49c708e06212dba6adbd54f4d0f5b0c95a7dbbf1f538d7355b05b060",
+          "sig": "54ad1540de1df611fbaffb8921c5992dc44a76ef720258309d53a46491ea3494"
+        },
+        "freshness": "fresh"
+      }
+    ],
+    "watermarks": {
+      "orgA": {
+        "issuer": "orgA",
+        "gen": 1,
+        "tick": 10,
+        "seq": 10
+      }
+    },
+    "allowed": true,
+    "now": 10,
+    "issuer_generations": {
+      "orgA": 1
+    },
+    "body_hash": "258e81bb526cc12dad93da5a0e6d363c5609d61cc71e4e80a4127ac37e8417f8",
+    "signature": "3df051c6efb4ca25b203bf70f5617dd9fa4d514cd84be4d892d9a35f3bce88eb",
+    "chains": [
+      {
+        "id": "e-a-admin-ops\u003ee-a-ops-carl",
+        "steps": [
+          {
+            "edge_id": "e-a-admin-ops",
+            "issuer": "orgA",
+            "gen": 1,
+            "actor": "alice",
+            "subject": "orgA:olga",
+            "scope": [
+              "read",
+              "write"
+            ],
+            "epoch": 1,
+            "valid": true,
+            "freshness": "fresh"
+          },
+          {
+            "edge_id": "e-a-ops-carl",
+            "parent": "e-a-admin-ops",
+            "issuer": "orgA",
+            "gen": 1,
+            "actor": "olga",
+            "subject": "orgB:carl",
+            "scope": [
+              "read"
+            ],
+            "epoch": 1,
+            "valid": true,
+            "freshness": "fresh"
+          }
+        ],
+        "valid": true,
+        "usable": true
+      }
+    ]
+  }
+  certificate: independently VERIFIED
+-- after compaction+restart bob: DENY --
+DENY orgB:bob read by orgB on tenant-a/doc-a (class=REMOTE_READ owner=orgA epoch=1)
+  reason: no usable delegation path
+  candidate e-a-admin-dev>e-a-dev-bob [invalid] e-a-dev-bob: revoked by rev-scenario
+    ok   e-a-admin-dev gen=1 orgA:alice->orgA:dave scope=read,write epoch=1 
+    FAIL e-a-dev-bob gen=1 orgA:dave->orgB:bob scope=read epoch=1 revoked by rev-scenario
+  evidence: rev-scenario
+  certificate: {
+    "version": 1,
+    "node": "orgB",
+    "tenant": "tenant-a",
+    "resource": "doc-a",
+    "subject": "orgB:bob",
+    "action": "read",
+    "class": "REMOTE_READ",
+    "tenant_source": {
+      "node": "orgA",
+      "seq": 1,
+      "tick": 1,
+      "kind": "tenant",
+      "issuer": "orgA",
+      "tenant": "tenant-a",
+      "owner_org": "orgA",
+      "prev": "",
+      "hash": "d5b86ea9bfbb5a0049d39a0457fd94b81bfd32edf8cd602729acb8479551e772",
+      "sig": "6b2613ebf6eaeca1b4219f1cba2e0b01d536d0f08df61d37b6b53de07f85a558"
+    },
+    "resource_source": {
+      "node": "orgA",
+      "seq": 2,
+      "tick": 2,
+      "kind": "resource",
+      "issuer": "orgA",
+      "tenant": "tenant-a",
+      "resource": "doc-a",
+      "owner_org": "orgA",
+      "prev": "d5b86ea9bfbb5a0049d39a0457fd94b81bfd32edf8cd602729acb8479551e772",
+      "hash": "78898deb09474cf237fd7cf0973d83d045f7947cb207fbf625fec11cf95958ce",
+      "sig": "f6e687f2b394f10c02ed5bc3a1d4255a5e8379fcfc72f2e14bd6ba597f25a569"
+    },
+    "steps": [
+      {
+        "delegate": {
+          "node": "orgA",
+          "seq": 6,
+          "tick": 6,
+          "kind": "delegate",
+          "issuer": "orgA",
+          "gen": 1,
+          "actor": "alice",
+          "tenant": "tenant-a",
+          "resource": "doc-a",
+          "epoch": 1,
+          "edge_id": "e-a-admin-dev",
+          "subject": "orgA:dave",
+          "scope": [
+            "read",
+            "write"
+          ],
+          "prev": "ad0bd57b49c708e06212dba6adbd54f4d0f5b0c95a7dbbf1f538d7355b05b060",
+          "hash": "3259557b20e7208d62a67eda38d37f5df38eb9a32d1ead0ef1a572c8c9d81be4",
+          "sig": "9f56dacac240cb1c10cb15f0574326a6a350e459d8ab4ca63fe80fe5fe175bd7"
+        },
+        "grant": {
+          "node": "orgA",
+          "seq": 3,
+          "tick": 3,
+          "kind": "authority",
+          "issuer": "orgA",
+          "gen": 1,
+          "actor": "alice",
+          "admin": true,
+          "prev": "78898deb09474cf237fd7cf0973d83d045f7947cb207fbf625fec11cf95958ce",
+          "hash": "80af2dea592ce7cf3f03165bd53501e8acb07ed4f511a88f28425a96c3d5dcd4",
+          "sig": "5f03e03147f3ce516bf042884a5e82117a6b62b6f5498b31b3d5f8fa264c15c9"
+        },
+        "freshness": ""
+      },
+      {
+        "delegate": {
+          "node": "orgA",
+          "seq": 7,
+          "tick": 7,
+          "kind": "delegate",
+          "issuer": "orgA",
+          "gen": 1,
+          "actor": "dave",
+          "tenant": "tenant-a",
+          "resource": "doc-a",
+          "epoch": 1,
+          "edge_id": "e-a-dev-bob",
+          "parent": "e-a-admin-dev",
+          "subject": "orgB:bob",
+          "scope": [
+            "read"
+          ],
+          "prev": "3259557b20e7208d62a67eda38d37f5df38eb9a32d1ead0ef1a572c8c9d81be4",
+          "hash": "03073535920280e38b136cce465c0b63b476a28297ed070fc9dfccb6cce301f4",
+          "sig": "9675ba3a498e1ea79c5a93fbd8d07f2769860c0bc66927131d8a4d4f8486586f"
+        },
+        "grant": {
+          "node": "orgA",
+          "seq": 4,
+          "tick": 4,
+          "kind": "authority",
+          "issuer": "orgA",
+          "gen": 1,
+          "actor": "dave",
+          "prev": "80af2dea592ce7cf3f03165bd53501e8acb07ed4f511a88f28425a96c3d5dcd4",
+          "hash": "538c67069e76fdb3f7bd9fc84eba953c65f7773d5b43410c75b41c76e683ff42",
+          "sig": "a356bb22e057953d5bbb8d5793927ce1b4975ea4da25a7899a8f0aed785d6e12"
+        },
+        "freshness": ""
+      }
+    ],
+    "evidence": [
+      {
+        "evidence_id": "rev-scenario",
+        "kind": "revoke",
+        "issuer": "orgA",
+        "gen": 1,
+        "node": "orgA",
+        "seq": 10,
+        "tick": 10,
+        "edge_id": "e-a-dev-bob",
+        "event": {
+          "node": "orgA",
+          "seq": 10,
+          "tick": 10,
+          "kind": "revoke",
+          "issuer": "orgA",
+          "gen": 1,
+          "actor": "alice",
+          "edge_id": "e-a-dev-bob",
+          "evidence_id": "rev-scenario",
+          "prev": "0b9be3577624b8c1093ff8d58f08349bf8968cfc098c9f4e0cb2fca86798154e",
+          "hash": "3709df661f158214299f713fed7338ccf6d2320d21c39b9c50e584e8651c52d6",
+          "sig": "ef28303bc13b0c10733bbc6da511ecffb2312797b45d42849646b8bfadb8b840"
+        }
+      }
+    ],
+    "watermarks": {
+      "orgA": {
+        "issuer": "orgA",
+        "gen": 1,
+        "tick": 10,
+        "seq": 10
+      }
+    },
+    "allowed": false,
+    "reasons": [
+      "no usable delegation path"
+    ],
+    "now": 10,
+    "issuer_generations": {
+      "orgA": 1
+    },
+    "body_hash": "73c49bafd57baa10adf80e23066fc4f2469f2c8034a6a3b353c1c0faf2ffa082",
+    "signature": "53f18de96ac75168a9452226abe5b8fcae061f6eb09334665bee8f9251d15b2d",
+    "chains": [
+      {
+        "id": "e-a-admin-dev\u003ee-a-dev-bob",
+        "steps": [
+          {
+            "edge_id": "e-a-admin-dev",
+            "issuer": "orgA",
+            "gen": 1,
+            "actor": "alice",
+            "subject": "orgA:dave",
+            "scope": [
+              "read",
+              "write"
+            ],
+            "epoch": 1,
+            "valid": true
+          },
+          {
+            "edge_id": "e-a-dev-bob",
+            "parent": "e-a-admin-dev",
+            "issuer": "orgA",
+            "gen": 1,
+            "actor": "dave",
+            "subject": "orgB:bob",
+            "scope": [
+              "read"
+            ],
+            "epoch": 1,
+            "valid": false,
+            "reasons": [
+              "revoked by rev-scenario"
+            ]
+          }
+        ],
+        "valid": false,
+        "usable": false,
+        "reasons": [
+          "e-a-dev-bob: revoked by rev-scenario"
+        ]
+      }
+    ]
+  }
+  certificate: independently VERIFIED
+
+all two-process checks passed
